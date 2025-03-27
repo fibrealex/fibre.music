@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FIBRE</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: black;
+      color: white;
+      font-family: sans-serif;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    img {
+      max-width: 300px;
+      width: 80%;
+      height: auto;
+    }
+
+    form {
+      margin-top: 30px;
+    }
+
+    input[type="email"] {
+      padding: 10px;
+      width: 250px;
+      max-width: 80vw;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    input[type="submit"] {
+      padding: 10px 20px;
+      margin-left: 10px;
+      background: white;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #confirmation {
+      display: none;
+      font-style: italic;
+      margin-top: 40px;
+      max-width: 80%;
+    }
+
+    @media (max-width: 480px) {
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      input[type="submit"] {
+        margin-left: 0;
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <img src="fibre_logo.png" alt="FIBRE Logo" />
+
+  <form id="subscribe-form">
+    <input type="email" name="EMAIL" placeholder="Please enter your email here." required>
+    <input type="submit" value="Subscribe">
+  </form>
+
+  <div id="confirmation">
+    your email has been recorded. thank you for your support, we'll be in touch. <br />fibre 2025
+  </div>
+
+  <script>
+    const form = document.getElementById('subscribe-form');
+    const confirmation = document.getElementById('confirmation');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const actionUrl = 'https://montai.us16.list-manage.com/subscribe/post?u=013827759687ffe12d7f35095&amp;id=a363d87cd6&amp;f_id=00dfc2e1f0';
+
+      fetch(actionUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData
+      }).then(() => {
+        form.style.display = 'none';
+        confirmation.style.display = 'block';
+      }).catch(() => {
+        form.style.display = 'none';
+        confirmation.innerHTML = "something went wrong. please try again later.";
+        confirmation.style.display = 'block';
+      });
+    });
+  </script>
+</body>
+</html>

@@ -8,7 +8,7 @@
     html, body {
       margin: 0;
       padding: 0;
-      height: 100%;
+      min-height: 100%;
       background: black;
       color: white;
       font-family: sans-serif;
@@ -20,17 +20,21 @@
       justify-content: center;
       flex-direction: column;
       text-align: center;
+      padding: 40px 20px;
+      box-sizing: border-box;
     }
 
-    img {
+    #logo {
       max-width: 300px;
       width: 80%;
       height: auto;
+      margin-bottom: 20px;
     }
 
     #show-poster {
-      margin-top: 40px;
+      margin: 40px 0;
       max-width: 400px;
+      width: 90%;
     }
 
     #tickets-button {
@@ -47,7 +51,7 @@
     }
 
     form {
-      margin-top: 30px;
+      margin: 30px 0;
     }
 
     input[type="email"] {
@@ -73,11 +77,15 @@
     #confirmation {
       display: none;
       font-style: italic;
-      margin-top: 40px;
+      margin: 40px 0;
       max-width: 80%;
     }
 
     @media (max-width: 480px) {
+      body {
+        padding: 30px 15px;
+      }
+
       form {
         display: flex;
         flex-direction: column;
@@ -88,11 +96,15 @@
         margin-left: 0;
         margin-top: 10px;
       }
+
+      #show-poster {
+        margin: 30px 0;
+      }
     }
   </style>
 </head>
 <body>
-  <img src="fibre_logo.png" alt="FIBRE Logo" />
+  <img id="logo" src="fibre_logo.png" alt="FIBRE Logo" />
 
   <form id="subscribe-form">
     <input type="email" name="EMAIL" placeholder="Please enter your email here." required>
@@ -103,9 +115,9 @@
     your email has been recorded. thank you for your support, we'll be in touch. <br />fibre 2025
   </div>
 
-  <!-- Yoi Toki poster and tickets button -->
+  <!-- YOI TOKI poster and tickets button -->
   <img id="show-poster" src="show_poster.jpg" alt="Show Poster" />
-  <a href="https://www.ticketmaster.com/yoi-toki-a-future-funkvaporwave-party-baltimore-maryland-04-11-2025/event/15006226B15F1555" id="tickets-button">Buy Tickets</a>
+  <a href="#" id="tickets-button">Buy Tickets</a>
 
   <script>
     const form = document.getElementById('subscribe-form');
